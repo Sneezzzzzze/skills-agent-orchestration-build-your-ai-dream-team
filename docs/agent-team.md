@@ -5,22 +5,22 @@ This project uses a coordinated team of custom agents—orchestrated through the
 ## Agents
 
 ### Orchestrator
-- **Model:** Claude Opus 4.7 (copilot)
+- **Model:** claude-haiku-4.5
 - **Responsibility:** Coordinates the Planner, Coder, and Designer agents to break down complex requests into tasks, manage dependencies, run work in parallel or sequentially as appropriate, and verify the integrated result.
 - **Definition:** `.github/agents/orchestrator.agent.md`
 
 ### Planner
-- **Model:** Claude Opus 4.7 (copilot)
+- **Model:** claude-haiku-4.5
 - **Responsibility:** Researches the codebase, documentation, dependencies, and edge cases to create practical implementation plans with ordered steps, file assignments, dependency mapping, and validation expectations.
 - **Definition:** `.github/agents/planner.agent.md`
 
 ### Coder
-- **Model:** GPT-5.5 (copilot)
+- **Model:** gpt-5.6-luna
 - **Responsibility:** Implements code-oriented tasks with clear structure, explicit errors, and testable behavior. Writes code, fixes bugs, creates support configuration (like `.vscode/launch.json`), and validates changes before reporting completion.
 - **Definition:** `.github/agents/coder.agent.md`
 
 ### Designer
-- **Model:** Gemini 3.1 Pro (copilot)
+- **Model:** claude-haiku-4.5
 - **Responsibility:** Handles UI/UX, accessibility, information architecture, interaction flow, and visual design. Creates polished dashboards with clear visual affordances, responsive layout, and accessible interactions.
 - **Definition:** `.github/agents/designer.agent.md`
 
