@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Pulse</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="dashboard">
+      <header class="dashboard-header">
+        <div>
+          <p class="eyebrow">Contributor overview</p>
+          <h1>Project Pulse</h1>
+        </div>
+        <div class="summary-pill">
+          <span id="project-count">0</span>
+          active projects
+        </div>
+      </header>
+
+      <section id="project-grid" class="project-grid" aria-live="polite"></section>
+    </main>
+
+    <script>
+      const projectGrid = document.getElementById('project-grid');
+      const projectCount = document.getElementById('project-count');
+
+      fetch('project-data.json')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Unable to load project data');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const projects = Array.isArray(data.projects) ? data.projects : [];
+          projectCount.textContent = String(projects.length);
+
+          projectGrid.innerHTML = projects
+            .map(
+              (project) => `
+                <article class="project-card" data-status="${project.status}">
+                  <div class="project-meta">
+                    <div>
+                      <p class="project-name">${project.name}</p>
+                      <p class="project-owner">Owner: ${project.owner}</p>
+                    </div>
+                    <span class="status-badge status-${project.status.toLowerCase().replace(/\s+/g, '-')}">${project.status}</span>
+                  </div>
+
+                  <div class="project-details">
+                    <div>
+                      <span class="label">Recent activity</span>
+                      <p>${project.recentActivity}</p>
+                    </div>
+                    <div>
+                      <span class="label">Priority</span>
+                      <p>${project.priority}</p>
+                    </div>
+                  </div>
+                </article>
+              `
+            )
+            .join('');
+        })
+        .catch((error) => {
+          projectGrid.innerHTML = `
+            <div class="error-state">
+              <p>Project data could not be loaded.</p>
+              <p>${error.message}</p>
+            </div>
+          `;
+        });
+    </script>
+  </body>
+</html>

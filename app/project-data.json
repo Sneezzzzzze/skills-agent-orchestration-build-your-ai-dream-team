@@ -1,0 +1,32 @@
+{
+  "projects": [
+    {
+      "name": "Atlas CRM",
+      "owner": "Priya Shah",
+      "status": "On Track",
+      "recentActivity": "Completed onboarding flow review and shipped the latest account sync fix.",
+      "priority": "High"
+    },
+    {
+      "name": "Northstar API",
+      "owner": "Marco Ruiz",
+      "status": "In Review",
+      "recentActivity": "OpenAPI contract updates are under review with integration partners.",
+      "priority": "High"
+    },
+    {
+      "name": "Beacon Launch",
+      "owner": "Aisha Chen",
+      "status": "At Risk",
+      "recentActivity": "Dependency delays are pushing the release checklist by two days.",
+      "priority": "Medium"
+    },
+    {
+      "name": "Lattice Docs",
+      "owner": "Evan Brooks",
+      "status": "Blocked",
+      "recentActivity": "Waiting on legal sign-off for the revised contributor guidance.",
+      "priority": "Low"
+    }
+  ]
+}
